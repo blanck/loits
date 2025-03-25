@@ -1,6 +1,12 @@
+Here's the updated README with your requested changes:
+
 # LOITS Game
 
+[![LOITS Game Screenshot](assets/images/screen.jpg)](https://loitsgame.web.app)
+
 Welcome to LOITS, a multiplayer game where players cooperate to complete block lines in a Tetris-style gameplay. Navigate using the WASD keys, move pieces with Q and E, and rotate them by shooting bullets or jumping with the Space-bar. Restart the game by pressing the R key.
+
+**[Try LOITS Game Now!](https://loitsgame.web.app)**
 
 ## Features
 
@@ -10,7 +16,7 @@ Welcome to LOITS, a multiplayer game where players cooperate to complete block l
 
 ## Development
 
-This project is open for further development! Contributions are welcome, and feel free to explore and enhance the game.
+This project is open for further development! Contributions are welcome - we encourage both human developers and AI collaborators to submit pull requests with improvements, new features, or optimizations. Feel free to explore and enhance the game.
 
 ## Built With
 
