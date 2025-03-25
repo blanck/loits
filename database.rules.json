@@ -1,0 +1,100 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "players": {
+      ".read": true,
+      "$playerId": {
+        ".write": "!data.exists() || data.child('peerId').val() === auth.uid || !data.exists()",
+        ".validate": "newData.hasChildren(['nickname', 'lastUpdate', 'peerId', 'online'])",
+        "nickname": {
+          ".validate": "newData.isString() && newData.val().length <= 20"
+        },
+        "lastUpdate": {
+          ".validate": "newData.isNumber() && newData.val() <= now"
+        },
+        "peerId": {
+          ".validate": "newData.isString()"
+        },
+        "online": {
+          ".validate": "newData.isBoolean()"
+        },
+        "lastSeen": {
+          ".validate": "newData.isNumber() && newData.val() <= now"
+        },
+        "colors": {
+          ".validate": "newData.hasChildren(['headHue', 'bodyHue', 'headLightness'])",
+          "headHue": {
+            ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 360"
+          },
+          "bodyHue": {
+            ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 360"
+          },
+          "headLightness": {
+            ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 100"
+          }
+        }
+      }
+    },
+    "shapes": {
+      ".read": true,
+      "$shapeId": {
+        ".write": true,
+        ".validate": "newData.hasChildren(['type', 'color', 'position', 'isLocked', 'isActive', 'lastUpdate', 'createdBy'])",
+        "type": {
+          ".validate": "newData.isString() && newData.val().matches(/^[IOLTS]$/)"
+        },
+        "color": {
+          ".validate": "newData.isNumber()"
+        },
+        "position": {
+          ".validate": "newData.hasChildren(['x', 'y', 'z'])",
+          "x": { ".validate": "newData.isNumber() && newData.val() >= -100 && newData.val() <= 100" },
+          "y": { ".validate": "newData.isNumber() && newData.val() >= -1 && newData.val() <= 20" },
+          "z": { ".validate": "newData.isNumber() && newData.val() >= -100 && newData.val() <= 100" }
+        },
+        "isLocked": { ".validate": "newData.isBoolean()" },
+        "isActive": { ".validate": "newData.isBoolean()" },
+        "lastUpdate": { ".validate": "newData.isNumber() && newData.val() <= now" },
+        "createdBy": { ".validate": "newData.isString()" }
+      }
+    },
+    "scores": {
+      ".read": true,
+      "$playerId": {
+        ".write": "!data.exists() || data.child('nickname').val() === root.child('players').child($playerId).child('nickname').val()",
+        ".validate": "newData.hasChildren(['nickname', 'score', 'lastUpdate'])",
+        "nickname": {
+          ".validate": "newData.isString() && newData.val().length <= 20"
+        },
+        "score": {
+          ".validate": "newData.isNumber() && newData.val() >= 0"
+        },
+        "lastUpdate": {
+          ".validate": "newData.isNumber() && newData.val() <= now"
+        }
+      }
+    },
+    "gameState": {
+      ".read": true,
+      ".write": true,
+      ".validate": "newData.hasChildren(['isActive', 'lastSpawnTime'])",
+      "isActive": {
+        ".validate": "newData.isBoolean()"
+      },
+      "lastSpawnTime": {
+        ".validate": "newData.isNumber() && newData.val() <= now"
+      },
+      "currentShapeId": {
+        ".validate": "!newData.exists() || newData.isString()"
+      },
+      "createdBy": {
+        ".validate": "newData.isString()"
+      },
+      "lastRowCompletion": {
+        "y": { ".validate": "newData.isNumber()" },
+        "timestamp": { ".validate": "newData.isNumber() && newData.val() <= now" }
+      }
+    }
+  }
+}

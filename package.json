@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "firebase": "^11.5.0",
+    "peerjs": "^1.5.4",
+    "three": "^0.174.0"
+  },
+  "devDependencies": {
+    "vite": "^6.2.2"
+  },
+  "scripts": {
+    "dev": "vite",
+    "prebuild": "rm -rf dist",
+    "build": "vite build",
+    "postbuild": "cp -r assets/* dist/assets/ && cp favicon.ico dist/",
+    "database": "firebase deploy --only database",
+    "preview": "vite preview",
+    "deploy": "npm run build && firebase deploy --only hosting",
+    "emulators": "firebase emulators:start --only database"
+  }
+}

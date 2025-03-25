@@ -1,0 +1,56 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+canvas {
+  display: block;
+}
+
+#ui-overlay {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#player-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#score {
+  margin-bottom: 5px;
+}
+
+#players {
+  margin-bottom: 5px;
+}
+
+#game-over {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 32px;
+  font-family: Arial, sans-serif;
+}
+
+.hidden {
+  display: none;
+}
